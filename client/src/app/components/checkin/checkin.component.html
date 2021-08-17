@@ -1,0 +1,22 @@
+<h1 class="text-center">RETRIEVE YOUR BOOKING</h1>
+<h1 class="text-center">-</h1>
+<p>You can find you booking code by filling out your family name and the booking code in your booking confirmation.</p>
+<form [formGroup]="checkinForm" (ngSubmit)="onSubmit()">
+  <mat-form-field class="mb-24">
+    <mat-label>Booking Code</mat-label>
+    <input matInput placeholder="Booking Code" formControlName="bookingCode" id="booking-code-input">
+    <mat-hint *ngIf=" checkinForm.get('bookingCode')?.errors?.minlength">Booking Code should be minimum 5 characters.</mat-hint>
+    <mat-hint *ngIf=" checkinForm.get('bookingCode')?.errors?.maxlength">Booking Code should be maximum 6 characters.</mat-hint>
+    <mat-error *ngIf=" checkinForm.get('bookingCode')?.errors?.required">Booking Code is required</mat-error>
+    <mat-error *ngIf=" checkinForm.get('bookingCode')?.hasError('codeInvalid')">Booking code can only contain alphabetical letters and number in range 2-9</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput  placeholder="Family Name" formControlName="familyName" id="family-name-input">
+    <mat-hint *ngIf=" checkinForm.get('familyName')?.errors?.minlength">Family Name should be minimum 2 characters.</mat-hint>
+    <mat-hint *ngIf=" checkinForm.get('familyName')?.errors?.maxlength">Family Name should be maximum 30 characters.</mat-hint>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" [disabled]="!checkinForm.valid" type="submit" id="submit-booking">Retrieve Booking</button>
+
+</form>

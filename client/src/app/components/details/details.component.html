@@ -1,0 +1,25 @@
+
+<h2> Your Booking Details </h2>
+<table class="mat-elevation-z8 mb-24">
+  <tbody>
+    <tr >
+      <td class="align-left">Name : {{bookingData?.passengers?.lastName}}, {{bookingData?.passengers?.firstName}}</td>
+      <td class="align-right"></td>
+    </tr>
+    <tr >
+      <td class="align-left">From : {{connection?.origin?.city?.name}}</td>
+      <td class="align-right">Booking Code : {{bookingData?.bookingCode}}</td>
+    </tr>
+
+    <tr >
+      <td class="align-left">To : {{connection?.destination?.city?.name}}</td>
+      <td class="align-right">Carrier : {{segment?.marketingFlight?.carrier?.name }}, {{bookingData?.passengers?.lastName}}</td>
+    </tr>
+    <tr >
+      <td class="align-left">Dep. Date : {{ segment?.marketingFlight?.operatingFlight?.localScheduledDeparture | date: "MMM d" }}</td>
+      <td class="align-right">Cabin : {{segment?.marketingFlight?.operatingFlight?.cabin?.code }}, {{segment?.marketingFlight?.operatingFlight?.cabin?.name }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<button [routerLink]="'/retrieve-booking'" mat-raised-button color="accent">Check Another Booking</button>
